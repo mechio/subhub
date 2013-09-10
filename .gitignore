@@ -1,6 +1,5 @@
 temp
 dist
-node_modules
 .sass-cache
 .bower
 components

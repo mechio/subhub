@@ -1,0 +1,20 @@
+{
+  "name": "Github open in Sublime",
+  "version": "1",
+  "manifest_version": 2,
+  "description": "Github open in Sublime",
+  "icons": {
+    "16": "icon-16.png",
+    "128": "icon-128.png"
+  },
+  "permissions": [],
+   "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": [
+        "lib/jquery.js", 
+        "scripts/content.js"
+      ]
+    }
+  ]
+}

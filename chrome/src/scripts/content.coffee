@@ -24,7 +24,7 @@ $('head').append("""
 # Create the button
 #
 button = $("""
-<a href="#" class="minibutton sidebar-button" title="Download this repository as a zip file" rel="nofollow">
+<a href="#" class="minibutton sidebar-button" title="Open this repository in Sublime Text 3" rel="nofollow">
   <span class="octicon octicon-link-external"></span><span>Open in Sublime</span>
 </a>
 """)

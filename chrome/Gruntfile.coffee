@@ -22,6 +22,7 @@ module.exports = (grunt) ->
       compile: 
         files: 
           'build/scripts/content.js': ['src/scripts/content.coffee']
+          'build/scripts/background.js': ['src/scripts/background.coffee']
 
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-copy'

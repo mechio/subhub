@@ -33,22 +33,9 @@ $(".repository-sidebar .only-with-full-nav").append(button)
 
 button.on 'click', (e) ->
   unless button.hasClass('loading')
-    repo = $("div[data-protocol-type='ssh'] .js-url-field").val()
-    doClone(repo)
+    repo = $("div[data-protocol-type='ssh'] .js-url-field").val() || $("div[data-protocol-type='http'] .js-url-field").val()    
+    button.addClass('loading')
+    chrome.runtime.sendMessage {clone: repo}, (response) ->
+      button.removeClass('loading')
+
   e.preventDefault()
-
-doClone = (repo) ->
-  button.addClass('loading')
-
-  xhr = $.ajax(
-    type     : 'POST'
-    url      : 'http://localhost:48666'
-    data     : JSON.stringify(url: repo)
-    dataType : 'text' 
-  )
-  
-  xhr.fail ->
-    console.error "Error cloning #{repo}"
-
-  xhr.always ->
-    button.removeClass('loading')

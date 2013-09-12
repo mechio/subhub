@@ -52,19 +52,19 @@ class ConnectionHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     self.send_header('Content-type',  'application/json')    
     self.send_header('Access-Control-Allow-Origin',  '*')    
     self.end_headers()
-
     data = json.loads(self.data_string.decode("utf-8"))
+    print("Cloning" + data['url'])
     open(clone(data['url']))
 
     return
 
-print("Staring lemon server on port " + str(PORT))
+print("Staring subhub server on port " + str(PORT))
 
 server = BaseHTTPServer.HTTPServer(('', PORT), ConnectionHandler)
 Thread(target=server.serve_forever).start()
 
 def plugin_unloaded():
-  print("Closing lemon server")
+  print("Closing subhub server")
   server.shutdown()
   server.server_close()
   

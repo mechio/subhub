@@ -9,6 +9,9 @@
     "128": "icon-128.png"
   },
   "permissions": [],
+  "background": {
+    "scripts": ["lib/jquery.js", "scripts/background.js"]
+  },
    "content_scripts": [
     {
       "matches": ["https://github.com/*"],

@@ -26,8 +26,8 @@ Clicking the button clones the repository into `~/.subhub` before opening it in 
 
 # TODOs
 
-* Linux Support
-* Windows Support
+* Linux support
+* Windows support
 * Sublime Text 2 support
 * Support Firefox & Safari
 

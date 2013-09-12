@@ -14,8 +14,9 @@ Clicking the button clones the repository into `~/.subhub` before opening it in 
 
 # Installation
 
-1. Install the Chrome Extension from ...
-2. Get the sublime plugin from Package Control
+1. Install the [Chrome Extension](https://chrome.google.com/webstore/detail/subhub/dndgngopahigljbjkfihmkaaaeceagbg)
+2. Get the plugin from [Sublime Package Control](http://wbond.net/sublime_packages/package_control) via the `Sublime Text -> Preferences -> Package Control: Install Package` menu item.
+
 
 ## Installation without Package Control
 

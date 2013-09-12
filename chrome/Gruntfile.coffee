@@ -2,6 +2,7 @@ module.exports = (grunt) ->
   grunt.initConfig
     clean:
       app: 'build/'
+      dist: 'dist/'
 
     copy: 
       main: 
@@ -17,7 +18,11 @@ module.exports = (grunt) ->
     watch:
       files: ['src/**/*']
       tasks: ['build']
-    
+
+    shell:
+      zip:
+        command: "mkdir -p dist/ && zip -r dist/subhub-chrome.zip build"
+
     coffee:
       compile: 
         files: 
@@ -28,6 +33,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-watch'
+  grunt.loadNpmTasks 'grunt-shell'
 
   grunt.registerTask 'build', [
     'clean'
@@ -36,3 +42,8 @@ module.exports = (grunt) ->
   ]
 
   grunt.registerTask 'default', 'build'
+  grunt.registerTask 'dist', [
+    'build' 
+    'clean:dist' 
+    'shell:zip'
+  ]  

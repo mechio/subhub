@@ -4,7 +4,7 @@ Add an 'Open in Sublime' button to GitHub
 
 ![Screenshot](https://raw.github.com/mechio/subhub/master/screenshot.png)
 
-Clicking the button clones the repository into `~/.ghcache` before opening it in Sublime Text 3
+Clicking the button clones the repository into `~/.subhub` before opening it in Sublime Text 3
 
 # Requirements
 
@@ -29,6 +29,7 @@ Clicking the button clones the repository into `~/.ghcache` before opening it in
 * Linux Support
 * Windows Support
 * Sublime Text 2 support
+* Support Firefox & Safari
 
 ### Author: [mech.io](http://mech.io)
 ### Contributors: [Barnaby Malet](http://twitter.com/barnabymalet), [Namit Chadha](http://twitter.com/namitchadha)

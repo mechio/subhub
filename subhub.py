@@ -12,7 +12,7 @@ try:
 except ImportError:
   import http.server as BaseHTTPServer
   
-CACHE_DIR = expanduser("~") + '/.ghcache'
+CACHE_DIR = expanduser("~") + '/.subhub'
 PORT      = 48666
 def open(directory):
   call([os.path.join(os.path.dirname(sublime.executable_path()), '../SharedSupport/bin/subl'), directory])

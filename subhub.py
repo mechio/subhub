@@ -1,6 +1,6 @@
 import sublime, sublime_plugin;
 import time, os.path, json, threading, sys
-from subprocess import call
+import subprocess
 from os.path import expanduser
 from threading import Thread
 import json
@@ -15,7 +15,7 @@ except ImportError:
 CACHE_DIR = expanduser("~") + '/.subhub'
 PORT      = 48666
 def open(directory):
-  call([os.path.join(os.path.dirname(sublime.executable_path()), '../SharedSupport/bin/subl'), directory])
+  subprocess.Popen([sublime.executable_path(), '.'], cwd=directory, shell=True)
 
 def clone(url):
   print('Cloning ' + url)
@@ -27,9 +27,18 @@ def clone(url):
 
   if not os.path.isdir(local_repo):
     call(['mkdir', '-p', CACHE_DIR + '/' + user])
-    call(['git', 'clone', url, local_repo, '--depth', '1'])
+    
+    if sublime.platform() == 'windows':
+      call(['git', 'clone', "https://github.com/"+ user +"/" + repo + ".git", local_repo, '--depth', '1'])
+    else:
+      call(['git', 'clone', url, local_repo, '--depth', '1'])
+  
   else: 
-    # TODO: Pull?
+    settings = sublime.load_settings("subhub.sublime-settings")
+    if settings.get('if_exists') == 'pull':
+      process = subprocess.Popen(['git', 'pull'], cwd=local_repo, shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+      stdout = [x.decode('unicode_escape').rstrip() for x in process.stdout.readlines()]
+      print(stdout)
     print('Repository is already checked out')
 
   return local_repo

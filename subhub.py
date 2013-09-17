@@ -15,7 +15,10 @@ except ImportError:
 CACHE_DIR = expanduser("~") + '/.subhub'
 PORT      = 48666
 def open(directory):
-  subprocess.Popen([sublime.executable_path(), '.'], cwd=directory, shell=True)
+  if sublime.platform() == 'windows':
+    subprocess.Popen([sublime.executable_path(), '.'], cwd=directory, shell=True)
+  else:
+    subprocess.call([os.path.join(os.path.dirname(sublime.executable_path()), '../SharedSupport/bin/subl'), directory])
 
 def clone(url):
   print('Cloning ' + url)

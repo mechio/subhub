@@ -29,12 +29,12 @@ def clone(url):
   local_repo = CACHE_DIR + '/' + user + '/' + repo
 
   if not os.path.isdir(local_repo):
-    call(['mkdir', '-p', CACHE_DIR + '/' + user])
+    subprocess.call(['mkdir', '-p', CACHE_DIR + '/' + user])
     
     if sublime.platform() == 'windows':
-      call(['git', 'clone', "https://github.com/"+ user +"/" + repo + ".git", local_repo, '--depth', '1'])
+      subprocess.call(['git', 'clone', "https://github.com/"+ user +"/" + repo + ".git", local_repo, '--depth', '1'])
     else:
-      call(['git', 'clone', url, local_repo, '--depth', '1'])
+      subprocess.call(['git', 'clone', url, local_repo, '--depth', '1'])
   
   else: 
     settings = sublime.load_settings("subhub.sublime-settings")
@@ -65,7 +65,6 @@ class ConnectionHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     self.send_header('Access-Control-Allow-Origin',  '*')    
     self.end_headers()
     data = json.loads(self.data_string.decode("utf-8"))
-    print("Cloning" + data['url'])
     open(clone(data['url']))
 
     return
